@@ -1,25 +1,30 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 
-/**
- * Generated class for the HomePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { EditKidPage } from "../edit-kid/edit-kid";
+import { Kid } from "../../models/kid";
+import { KidsService } from "../../services/kids";
+import { KidPage } from "../kid/kid";
 
-@IonicPage()
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
 })
 export class HomePage {
+  kids: Kid[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private navCtrl: NavController, private kidsService: KidsService) {}
+
+  ionViewWillEnter() {
+    this.kids = this.kidsService.getKids();
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad HomePage');
+  onNewKid() {
+    this.navCtrl.push(EditKidPage, {mode: 'New'});
+  }
+
+  onLoadKid(kid: Kid, index:number) {
+    this.navCtrl.push(KidPage, {kid: kid, index: index})
   }
 
 }

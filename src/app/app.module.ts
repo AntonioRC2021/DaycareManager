@@ -9,6 +9,10 @@ import { HomePage } from '../pages/home/home';
 import { KidPage } from "../pages/kid/kid";
 import { EditKidPage } from "../pages/edit-kid/edit-kid";
 import { TabsPage } from "../pages/tabs/tabs";
+import { KidsService } from "../services/kids";
+import { HomeService } from "../services/home";
+import { SigninPage } from "../pages/signin/signin";
+import { SignupPage } from "../pages/signup/signup";
 
 @NgModule({
   declarations: [
@@ -16,7 +20,9 @@ import { TabsPage } from "../pages/tabs/tabs";
     HomePage,
     KidPage,
     EditKidPage,
-    TabsPage
+    TabsPage,
+    SigninPage,
+    SignupPage
   ],
   imports: [
     BrowserModule,
@@ -28,12 +34,16 @@ import { TabsPage } from "../pages/tabs/tabs";
     HomePage,
     KidPage,
     EditKidPage,
-    TabsPage
+    TabsPage,
+    SigninPage,
+    SignupPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    HomeService,
+    KidsService
   ]
 })
 export class AppModule {}

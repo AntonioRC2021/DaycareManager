@@ -1,18 +1,47 @@
-<!--
-  Generated template for the KidPage page.
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar>
-    <ion-title>kid</ion-title>
+    <ion-title>{{ kid.name }} {{ kid.lastName}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <img class="card-img-top img-fluid" src="../assets/imgs/Goku_Damaged.png">
+        <h2>{{ kid.name}} {{kid.lastName}}</h2>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item *ngFor="let parent of kid.parents">
+          {{ parent.name }}
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <button
+          ion-button
+          outline
+          block
+          [disabled]="cdIn"
+          (click)="checkIn()">Check In</button>
+      </ion-col>
+      <ion-col>
+        <button
+          ion-button
+          outline
+          block
+          [disabled]="!cdIn"
+          (click)="checkOut()"
+          color="danger"
+          >Check Out</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
