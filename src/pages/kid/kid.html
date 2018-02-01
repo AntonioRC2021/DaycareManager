@@ -2,6 +2,11 @@
 <ion-header>
 
   <ion-navbar>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="onShowOptions($event)">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
     <ion-title>{{ kid.name }} {{ kid.lastName}}</ion-title>
   </ion-navbar>
 

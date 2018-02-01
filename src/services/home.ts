@@ -1,8 +1,9 @@
 import { Parent } from "../models/parent";
 
+
 export class HomeService {
   private parents: Parent[] = [];
-
+  
   addPerson(name: string, lastName: number) {
     this.parents.push(new Parent(name, lastName));
   }
@@ -18,5 +19,6 @@ export class HomeService {
   removePerson(index: number) {
     this.parents.splice(index, 1);
   }
+
 
 }
